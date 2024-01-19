@@ -186,6 +186,7 @@ ext{
         // Retrieve Security Plugin Zip from zipArchive
         configurations.secureIntegTestPluginArchive.asFileTree.each {
             if(it.name.contains("opensearch-security")) {
+                println('Downloading security.')
                 cluster.plugin(provider(new Callable<RegularFile>(){
                         @Override
                         RegularFile call() throws Exception {
@@ -348,6 +349,7 @@ testClusters.integTest {
 
     // Installs all registered zipArchive dependencies on integTest cluster nodes except security
     configurations.zipArchive.asFileTree.each {
+        println('Downloading blah.')
             plugin(provider(new Callable<RegularFile>(){
                     @Override
                     RegularFile call() throws Exception {
